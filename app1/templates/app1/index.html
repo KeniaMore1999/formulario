@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Formulario Pagos 
+{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <!-- formulario -->
+        <div class="col-3">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-2">
+                    <label for="monto">Monto</label>
+                    <input type="text" name="monto" id="monto" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <label for="tasa">Tasa</label>
+                    <input type="text" name="tasa" id="tasa" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <label for="plazo">Plazo</label>
+                    <input type="text" name="plazo" id="plazo" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <label for="cuota">Cuota</label>
+                    <input type="text" name="cuota" id="cuota" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <label for="total">Total a Pagar</label>
+                    <input type="text" name="total" id="total" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <input type ="submit" class="btn btn-success" value="Calcular">
+                </div>
+            </form>
+        </div>
+        <!-- datos -->
+        <div class="col-9">
+            <h2>Formulario</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>monto</th>
+                        <th>tasa</th>
+                        <th>plazo</th>
+                        <th>cuota</th>
+                        <th>total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in formulario %}
+                        <tr>
+                            <td>{{ p.monto }}</td>
+                            <td>{{ p.tasa }}</td>
+                            <td>{{ p.plazo }}</td>
+                            <td>{{ p.cuota }}</td>
+                            <td>{{ p.total }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
